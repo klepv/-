@@ -1,0 +1,306 @@
+
+```html
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Health and Beauty - Салон краси</title>
+
+    <!-- Підключення Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Підключення іконок для Viber -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Основні стилі */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Фон для header */
+        header {
+            background: linear-gradient(135deg, #ff61a6, #ff8db7);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 4px solid #ff4c8b;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin: 0;
+        }
+
+        header h2 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        /* Стилі для контенту */
+        section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #ff61a6;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        /* Стилі для переліку процедур */
+        .services-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .service-item {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #ff61a6;
+        }
+
+        .service-item p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .service-description {
+            display: none;
+            font-size: 16px;
+            color: #555;
+            margin-top: 20px;
+        }
+
+        .active-description {
+            display: block;
+        }
+
+        /* Стилі для кнопок */
+        .btn {
+            background-color: #ff61a6;
+            padding: 12px 25px;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #ff4c8b;
+        }
+
+        /* Стилі для контактної інформації */
+        .contact-info {
+            background-color: #ff61a6;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 4px solid #ff4c8b;
+            margin-top: 40px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #f0c3d2;
+        }
+
+        /* Геолокація */
+        .location {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Адаптивність */
+        @media (max-width: 768px) {
+            .services-list {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .service-item {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>НОВОДНІСТРОВСЬК 🌸</h1>
+    <h2>“Health and Beauty”</h2>
+</header>
+
+<section>
+    <h2>Наші послуги</h2>
+
+    <div class="services-list">
+        <div class="service-item" onclick="toggleDescription('cleaning')">
+            <h3>Чистка обличчя</h3>
+            <p>Очищаємо шкіру від забруднень і надлишків себуму.</p>
+            <div id="cleaning" class="service-description">
+                <p>Чистка обличчя є важливою для глибокого очищення шкіри від забруднень та мертвих клітин. Процедура дозволяє позбутися акне, чорних точок і дає змогу шкірі дихати, надаючи їй свіжий і здоровий вигляд.</p>
+            </div>
+        </div>
+
+        <div class="service-item" onclick="toggleDescription('microneedling')">
+            <h3>Мікронідлінг</h3>
+            <p>Усунення пігментації та омолодження шкіри.</p>
+            <div id="microneedling" class="service-description">
+                <p>Мікронідлінг використовує спеціальне обладнання для стимуляції вироблення колагену, що допомагає боротися з пігментацією, пост-акне та іншими шкірними дефектами.</p>
+            </div>
+        </div>
+
+        <div class="service-item" onclick="toggleDescription('fermentotherapy')">
+            <h3>Ферментотерапія</h3>
+            <p>Омолодження, зволоження та баланс шкіри.</p>
+            <div id="fermentotherapy" class="service-description">
+                <p>Ферментотерапія допомагає відновити баланс шкіри, насичує її корисними ферментами для зволоження та омолодження. Це допомагає вирівняти тон шкіри та боротися з акне.</p>
+            </div>
+        </div>
+
+        <div class="service-item" onclick="toggleDescription('facial_massage')">
+            <h3>Масаж обличчя</h3>
+            <p>Омолодження та покращення тонусу шкіри.</p>
+            <div id="facial_massage" class="service-description">
+                <p>Масаж обличчя стимулює кровообіг, покращує еластичність шкіри та зменшує набряки. Вакуумний або лімфодренажний масаж допомагає омолодити шкіру та зробити її більш пружною.</p>
+            </div>
+        </div>
+
+        <div class="service-item" onclick="toggleDescription('diamond_polishing')">
+            <h3>Алмазна шліфовка</h3>
+            <p>Глибоке очищення та вирівнювання текстури шкіри.</p>
+            <div id="diamond_polishing" class="service-description">
+                <p>Алмазна шліфовка – це процедура, яка допомагає очистити шкіру від ороговілих клітин і вирівняти її текстуру. Вона покращує тонус шкіри та надає їй здоровий вигляд.</p>
+            </div>
+        </div>
+
+        <div class="service-item" onclick="toggleDescription('oxygen_therapy')">
+            <h3>Оксигенотерапія</h3>
+            <p>Омолодження та зволоження за допомогою кисню.</p>
+            <div id="oxygen_therapy" class="service-description">
+                <p>Оксигенотерапія використовує кисень для глибокого зволоження та живлення шкіри, що стимулює її омолодження і надає здоровий вигляд.</p>
+            </div>
+        </div>
+
+        <div class="service-item" onclick
+
+="toggleDescription('body_contouring')">
+            <h3>Корекція фігури</h3>
+            <p>Вакуумний масаж, міостимуляція, біотоковий масаж та інші процедури.</p>
+            <div id="body_contouring" class="service-description">
+                <p>Корекція фігури включає кілька процедур для покращення контурів тіла: вакуумний масаж, біотоковий масаж, міостимуляція та інші методи для зменшення об'ємів та поліпшення вигляду тіла.</p>
+            </div>
+        </div>
+
+        <div class="service-item" onclick="toggleDescription('hair_removal')">
+            <h3>Лазерна епіляція</h3>
+            <p>Безболісне видалення волосся за допомогою лазера.</p>
+            <div id="hair_removal" class="service-description">
+                <p>Лазерна епіляція – це сучасний метод видалення волосся, який дозволяє позбутися небажаного волосся на тривалий час без болю та дискомфорту.</p>
+            </div>
+        </div>
+
+        <div class="service-item" onclick="toggleDescription('manicure')">
+            <h3>Манікюр</h3>
+            <p>Комбінований, апаратний та чоловічий манікюр.</p>
+            <div id="manicure" class="service-description">
+                <p>Ми пропонуємо різні види манікюру: комбінований, апаратний та чоловічий манікюр для будь-яких потреб і переваг.</p>
+            </div>
+        </div>
+
+        <div class="service-item" onclick="toggleDescription('eyebrow_shaping')">
+            <h3>Моделювання брів</h3>
+            <p>Ламінування, фарбування та корекція брів.</p>
+            <div id="eyebrow_shaping" class="service-description">
+                <p>Моделювання брів включає такі процедури, як ламінування, фарбування та корекція, що допомагають створити ідеальну форму та вигляд брів.</p>
+            </div>
+        </div>
+
+        <div class="service-item" onclick="toggleDescription('piercing')">
+            <h3>Пірсинг</h3>
+            <p>Створення стильних пірсингів.</p>
+            <div id="piercing" class="service-description">
+                <p>Ми пропонуємо різноманітні варіанти пірсингу, які підкреслять вашу індивідуальність і стиль.</p>
+            </div>
+        </div>
+
+        <div class="service-item" onclick="toggleDescription('hairdresser')">
+            <h3>Послуги Перукаря</h3>
+            <p>Стрижки, укладки, фарбування та інші послуги.</p>
+            <div id="hairdresser" class="service-description">
+                <p>Наші досвідчені перукарі допоможуть вам створити новий стиль: стрижки, фарбування, укладки і багато інших послуг для вашого комфорту.</p>
+            </div>
+        </div>
+
+        <div class="service-item" onclick="toggleDescription('barber_services')">
+            <h3>Послуги Барбера</h3>
+            <p>Стрижки та догляд за бородою.</p>
+            <div id="barber_services" class="service-description">
+                <p>Послуги барбера включають стильні стрижки та догляд за бородою, що дозволяють чоловікам виглядати доглянутими і модними.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="btn" onclick="window.location.href='viber://chat?number=%2B380675530867'">Записатися на прийом в Viber</button>
+    
+    <div class="location">
+        <p>📍 Геолокація: <a href="https://www.google.com/maps?q=48.6764,27.5162" target="_blank">Новодністровськ</a></p>
+    </div>
+</section>
+
+<section class="contact-info">
+    <h2>Контакти:</h2>
+    <p>Тел.: <a href="tel:+380675530867">0675530867</a> / <a href="viber://chat?number=%2B380675530867">Viber</a></p>
+    <p>Instagram: <a href="https://www.instagram.com/health_and_beauty_novod/" target="_blank">@health_and_beauty_novod</a></p>
+</section>
+
+<script>
+    function toggleDescription(serviceId) {
+        const description = document.getElementById(serviceId);
+        description.classList.toggle('active-description');
+    }
+</script>
+
+</body>
+</html>
